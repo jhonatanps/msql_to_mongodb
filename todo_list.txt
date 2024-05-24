@@ -1,0 +1,22 @@
+Requisitos:
+	Node
+	MySQL
+	MongoDB
+	VsCode
+	Postman
+
+
+Node - Start no projeto - Implementado em sala.
+	Bibliotecas:
+		mysql2 - Implementado em sala.
+		nodemon - Implementado em sala.
+		express - Implementado em sala.
+mongodb - Implementado em sala.
+
+Regras de negócio:
+	Converter o banco MySql para o MongoDB.
+
+Método:
+	Criar e configurar o projeto - index.js
+	Criar uma conexão com MySql
+	Criar uma conexão com MongoDB	

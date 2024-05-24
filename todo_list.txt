@@ -11,12 +11,16 @@ Node - Start no projeto - Implementado em sala.
 		mysql2 - Implementado em sala.
 		nodemon - Implementado em sala.
 		express - Implementado em sala.
-mongodb - Implementado em sala.
+        mongodb - Implementado em sala.
 
 Regras de negócio:
 	Converter o banco MySql para o MongoDB.
 
 Método:
-	Criar e configurar o projeto - index.js
+	Criar e configurar o projeto - index.js - Implementado em sala.
+                                   script nodemon - Implementado em sala.
+                                   
 	Criar uma conexão com MySql
 	Criar uma conexão com MongoDB	
+    Criar banco de dados em MySql - BD Mercado - Tabela Produtos
+    Criar banco de dados mongoDB/coleção

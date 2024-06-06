@@ -1,5 +1,5 @@
 Requisitos:
-	Node
+	Node 
 	MySQL
 	MongoDB
 	VsCode
@@ -20,7 +20,32 @@ Método:
 	Criar e configurar o projeto - index.js - Implementado em sala.
                                    script nodemon - Implementado em sala.
                                    
-	Criar uma conexão com MySql
+	Criar uma conexão com MySql - Implementado em sala.
+    Criar banco de dados em MySql - Implementado em sala.
 	Criar uma conexão com MongoDB	
-    Criar banco de dados em MySql - BD Mercado - Tabela Produtos
     Criar banco de dados mongoDB/coleção
+
+
+*******************BD**************************
+
+create database produtos_mongo;
+
+use produtos_mongo;
+
+create table produtos(
+	id int primary key auto_increment,
+    nome varchar(100),
+    preco double,
+    qtde int
+);
+
+
+insert into produtos (nome, preco, qtde) values ("arroz", 58.8, 12);
+
+insert into produtos (nome, preco, qtde) values ("coxao mole", 50.0, 10);
+insert into produtos (nome, preco, qtde) values ("cerveja", 12, 38);
+insert into produtos (nome, preco, qtde) values ("sabao", 12.99 , 50);
+insert into produtos (nome, preco, qtde) values ("pipoca", 3.99 , 15 );
+insert into produtos (nome, preco, qtde) values ("coca cola", 11 , 9);
+
+select * from produtos;

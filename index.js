@@ -1,9 +1,38 @@
 const express = require('express');
 const mysql = require('mysql2');
+const mongoose = require('mongoose');
 
 const app = express();
 
 app.use(express.json());
+
+// MongoDB conexao
+async function mongoConnect(){
+    await mongoose.connect('mongodb://localhost:27017/login');
+    console.log('Conectou ao MongoDB com Mongoose!');
+}
+
+mongoConnect().catch((err) => console.log(err));
+
+// esquema
+const userSchema = new mongoose.Schema({
+    name: String,
+    login: String,
+    senha: String,
+});
+
+// Modelo de usuario
+const User = mongoose.model('User', userSchema, 'users');
+
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users)
+    } catch (error) {
+        console.log('Erro ao recuperar usuarios: ', err);
+        res.status(500).json({error: 'Erro ao recuperar usuarios'});
+    }
+});
 
 
 const connection = mysql.createConnection({
@@ -18,7 +47,7 @@ connection.connect((err) => {
         console.log("Erro ao conectar ao banco de dados", err)
         return;
     }
-    console.log("Conexão bem-sucedida")
+    console.log("Conexão MySQL bem-sucedida")
 });
 
 app.get('/allprodutos', async (req, res) => {

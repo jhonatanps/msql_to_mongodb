@@ -21,8 +21,50 @@ const userSchema = new mongoose.Schema({
     senha: String,
 });
 
+const productSchema = new mongoose.Schema({
+    nome:{type: String},
+    preco:{type: Number},
+    qtde:{type: Number},
+},{versionKey: false});
+
 // Modelo de usuario
 const User = mongoose.model('User', userSchema, 'users');
+
+const Product = mongoose.model('Products', productSchema);
+
+app.get('/save/products', async(req, res) => {
+
+    try {
+        const results = await new Promise((resolve, reject) => {
+            connection.query('SELECT * FROM produtos', (err, results) => {
+                if(err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+             })
+        })
+
+        for(const obj of results){
+
+            const newProduct = new Product({
+                nome: obj.nome,
+                preco: obj.preco,
+                qtde: obj.qtde,
+            })
+
+            newProduct.save().then(() => console.log("Produto salvo com seucesso"))
+                                .catch((err) => console.log('Erro ao salver o usuário', err))
+        }
+
+        res.status(200).json('Objetos salvos com sucesso');
+    } catch (error) {
+        console.log('Erro ao executar um salvamento no mongoDB ', error);
+        res.status(500).json({error: 'Erro aso ececutar um salvamento no mongoDB'});
+    }
+
+});
+
 
 app.get('/users', async (req, res) => {
     try {
